@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { Services } from './components/Services';
@@ -7,18 +7,13 @@ import { About } from './components/About';
 import { Portfolio } from './components/Portfolio';
 import { TechStack } from './components/TechStack';
 import { Testimonials } from './components/Testimonials';
-import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
-import { LegalBanner } from './components/LegalBanner';
-import { PrivacyPolicy } from './components/PrivacyPolicy';
 import { CustomCursor } from './components/CustomCursor';
 import { ScrollProgress } from './components/ScrollProgress';
 import { BackToTop } from './components/BackToTop';
 import { LoadingScreen } from './components/LoadingScreen';
 
 export default function App() {
-  const [privacyOpen, setPrivacyOpen] = useState(false);
-
   useEffect(() => {
     document.documentElement.style.scrollBehavior = 'smooth';
     if (window.innerWidth > 768) {
@@ -41,12 +36,9 @@ export default function App() {
           <TechStack />
           <Portfolio />
           <Testimonials />
-          <Contact />
         </main>
-        <Footer onOpenPrivacyPolicy={() => setPrivacyOpen(true)} />
-        <LegalBanner onOpenPrivacyPolicy={() => setPrivacyOpen(true)} />
+        <Footer />
         <BackToTop />
-        <PrivacyPolicy isOpen={privacyOpen} onClose={() => setPrivacyOpen(false)} />
       </div>
     </>
   );

@@ -2,8 +2,9 @@ import { useState } from 'react';
 import { motion } from 'motion/react';
 import { ArrowRight } from 'lucide-react';
 import { S } from './Logo';
+import { assetUrl } from './ui/utils';
 
-const HERO_LOCAL = '/images/hero.jpg';
+const HERO_LOCAL = assetUrl('images/hero.png');
 const HERO_FALLBACK =
   'https://images.unsplash.com/photo-1769071167136-f25178b607dd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkZXZlbG9wZXIlMjBwcm9ncmFtbWVyJTIwZGFyayUyMHBvcnRyYWl0JTIwcHJvZmVzc2lvbmFsfGVufDF8fHx8MTc3Mzk5MDcyM3ww&ixlib=rb-4.1.0&q=80&w=1080';
 
@@ -137,7 +138,7 @@ export function Hero() {
               transition={{ delay: 0.65, duration: 0.6 }}
             >
               <motion.a
-                href="#contact"
+                href="#portfolio"
                 className="inline-flex items-center gap-2 px-8 py-4 rounded-full"
                 style={{
                   background: `linear-gradient(135deg, ${S.bright}, ${S.mid})`,

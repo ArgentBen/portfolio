@@ -18,7 +18,6 @@ export function Header() {
     { name: 'Услуги', href: '#services' },
     { name: 'Портфолио', href: '#portfolio' },
     { name: 'Обо мне', href: '#about' },
-    { name: 'Контакты', href: '#contact' },
   ];
 
   return (
@@ -45,12 +44,10 @@ export function Header() {
         style={{ border: '1px solid rgba(196,201,207,0.08)' }}
         transition={{ duration: 0.4 }}
       >
-        {/* Logo */}
         <a href="#home" style={{ textDecoration: 'none' }}>
           <Logo size="md" />
         </a>
 
-        {/* Desktop Navigation */}
         <nav className="hidden lg:flex items-center gap-8">
           {navItems.map((item, index) => (
             <motion.a
@@ -77,25 +74,6 @@ export function Header() {
           ))}
         </nav>
 
-        {/* CTA */}
-        <motion.a
-          href="#contact"
-          className="hidden lg:flex items-center gap-2 px-6 py-2.5 rounded-full text-sm"
-          style={{
-            background: 'linear-gradient(135deg, #C4C9CF, #8C9198)',
-            color: '#0a0a0a',
-            fontWeight: 700,
-            letterSpacing: '0.03em',
-            textDecoration: 'none',
-            boxShadow: '0 0 20px rgba(196,201,207,0.2)',
-          }}
-          whileHover={{ scale: 1.04, boxShadow: '0 0 30px rgba(196,201,207,0.35)' }}
-          whileTap={{ scale: 0.96 }}
-        >
-          Связаться
-        </motion.a>
-
-        {/* Mobile toggle */}
         <button
           className="lg:hidden"
           style={{ color: '#C4C9CF' }}
@@ -105,7 +83,6 @@ export function Header() {
         </button>
       </motion.div>
 
-      {/* Mobile menu */}
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
@@ -131,19 +108,6 @@ export function Header() {
                 {item.name}
               </a>
             ))}
-            <a
-              href="#contact"
-              className="mt-2 px-6 py-3 rounded-full text-sm text-center"
-              style={{
-                background: 'linear-gradient(135deg, #C4C9CF, #8C9198)',
-                color: '#0a0a0a',
-                fontWeight: 700,
-                textDecoration: 'none',
-              }}
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Связаться
-            </a>
           </motion.div>
         )}
       </AnimatePresence>

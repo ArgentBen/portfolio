@@ -3,10 +3,11 @@ import React, { useRef, useState, useCallback, useEffect } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import { X, ExternalLink, ChevronLeft, ChevronRight, ArrowRight } from 'lucide-react';
 import { S } from './Logo';
+import { assetUrl } from './ui/utils';
 
-/** Превью слайдера: положите файлы в `public/images/portfolio/` — имя = id проекта, напр. `1.jpg` (можно .webp, тогда поменяйте расширение в `projectImage`). */
+/** Превью слайдера: файлы в `public/images/portfolio/` — имя = id проекта, напр. `1.jpg`. */
 function projectImage(id: number): string {
-  return `/images/portfolio/${id}.jpg`;
+  return assetUrl(`images/portfolio/${id}.jpg`);
 }
 
 const SLIDE_FALLBACK: Record<number, string> = {
@@ -366,8 +367,11 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
               })}
             </div>
 
+            {project.url && (
             <motion.a
-              href={project.url || '#contact'}
+              href={project.url}
+              target="_blank"
+              rel="noopener noreferrer"
               className="mt-auto inline-flex items-center justify-center gap-2 w-full py-3.5 rounded-2xl text-sm"
               style={{
                 background: `linear-gradient(135deg, ${S.bright}, ${S.mid})`,
@@ -381,6 +385,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
               Посетить сайт
               <ExternalLink className="w-4 h-4" />
             </motion.a>
+            )}
           </div>
         </div>
       </motion.div>

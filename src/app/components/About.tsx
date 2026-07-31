@@ -1,6 +1,7 @@
 import { motion, useInView } from 'motion/react';
 import { useRef } from 'react';
-import { Award, Users, Target, Zap } from 'lucide-react';
+import { Award, User, Target, Zap } from 'lucide-react';
+import { assetUrl } from './ui/utils';
 
 export function About() {
   const ref = useRef(null);
@@ -13,9 +14,9 @@ export function About() {
       description: 'Высокие стандарты в каждом проекте',
     },
     {
-      icon: Users,
-      title: 'Команда',
-      description: 'Профессионалы своего дела',
+      icon: User,
+      title: 'Опыт',
+      description: 'Более 5 лет в веб-разработке',
     },
     {
       icon: Target,
@@ -31,12 +32,10 @@ export function About() {
 
   return (
     <section className="py-24 px-6 md:px-12 lg:px-24 relative overflow-hidden" id="about">
-      {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-muted/20 to-transparent" />
 
       <div className="container mx-auto relative z-10" ref={ref}>
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left Content */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
@@ -49,7 +48,7 @@ export function About() {
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
               transition={{ delay: 0.2, duration: 0.6 }}
             >
-              Создаем будущее
+              Создаю будущее
               <br />
               <span className="text-primary">вместе с вами</span>
             </motion.h2>
@@ -60,9 +59,8 @@ export function About() {
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ delay: 0.4, duration: 0.6 }}
             >
-              Мы — команда опытных разработчиков и дизайнеров, специализирующаяся на создании 
-              современных веб-решений. Наша миссия — превращать сложные задачи в простые и 
-              эффективные цифровые продукты.
+              Я — веб-разработчик, специализируюсь на создании современных цифровых решений.
+              Моя задача — превращать сложные задачи в простые и эффективные продукты.
             </motion.p>
 
             <motion.p
@@ -71,9 +69,8 @@ export function About() {
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ delay: 0.5, duration: 0.6 }}
             >
-              С 2018 года мы реализовали более 150 проектов для клиентов из разных отраслей. 
-              Каждый проект — это возможность применить новейшие технологии и создать что-то 
-              по-настоящему уникальное.
+              С 2018 года я реализовал более 150 проектов для клиентов из разных отраслей.
+              Каждый проект — возможность применить новые технологии и создать что-то уникальное.
             </motion.p>
 
             <motion.div
@@ -105,7 +102,6 @@ export function About() {
             </motion.div>
           </motion.div>
 
-          {/* Right Visual */}
           <motion.div
             className="relative"
             initial={{ opacity: 0, x: 50 }}
@@ -113,54 +109,23 @@ export function About() {
             transition={{ duration: 0.8 }}
           >
             <div className="relative">
-              {/* Main Card */}
               <motion.div
-                className="relative bg-gradient-to-br from-primary/20 to-secondary/20 rounded-3xl p-12 border border-primary/30"
-                animate={{
-                  y: [0, -10, 0],
-                }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
+                className="relative overflow-hidden rounded-3xl border border-primary/30"
+                animate={{ y: [0, -10, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
               >
-                <div className="text-center">
-                  <motion.div
-                    className="text-6xl md:text-7xl mb-4 text-primary"
-                    style={{ fontWeight: 700 }}
-                    animate={{
-                      scale: [1, 1.05, 1],
-                    }}
-                    transition={{
-                      duration: 2,
-                      repeat: Infinity,
-                      ease: "easeInOut"
-                    }}
-                  >
-                    150+
-                  </motion.div>
-                  <div className="text-xl mb-2" style={{ fontWeight: 600 }}>
-                    Успешных проектов
-                  </div>
-                  <div className="text-muted-foreground">
-                    За последние 5 лет
-                  </div>
-                </div>
+                <img
+                  src={assetUrl('images/hero.png')}
+                  alt="Веб-разработчик АРГЕНТУМ"
+                  className="w-full object-cover"
+                  style={{ aspectRatio: '4/5', objectPosition: 'top center' }}
+                />
               </motion.div>
 
-              {/* Floating Cards */}
               <motion.div
                 className="absolute -top-6 -right-6 bg-card border border-border rounded-2xl p-6 shadow-xl"
-                animate={{
-                  y: [0, 15, 0],
-                  rotate: [0, 5, 0],
-                }}
-                transition={{
-                  duration: 5,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
+                animate={{ y: [0, 15, 0], rotate: [0, 5, 0] }}
+                transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
               >
                 <div className="text-3xl text-primary mb-2" style={{ fontWeight: 700 }}>
                   98%
@@ -172,21 +137,14 @@ export function About() {
 
               <motion.div
                 className="absolute -bottom-6 -left-6 bg-card border border-border rounded-2xl p-6 shadow-xl"
-                animate={{
-                  y: [0, -15, 0],
-                  rotate: [0, -5, 0],
-                }}
-                transition={{
-                  duration: 6,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
+                animate={{ y: [0, -15, 0], rotate: [0, -5, 0] }}
+                transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
               >
                 <div className="text-3xl text-primary mb-2" style={{ fontWeight: 700 }}>
-                  24/7
+                  150+
                 </div>
                 <div className="text-sm text-muted-foreground">
-                  Поддержка
+                  Проектов
                 </div>
               </motion.div>
             </div>

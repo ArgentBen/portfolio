@@ -300,7 +300,7 @@ export function Services() {
 
                   {/* CTA */}
                   <motion.a
-                    href="#contact"
+                    href="#portfolio"
                     className="inline-flex items-center gap-2 text-sm"
                     style={{
                       color: isHovered ? p.color : '#606060',
