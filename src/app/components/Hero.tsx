@@ -194,31 +194,40 @@ export function Hero() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.4, duration: 1, ease: 'easeOut' }}
           >
-            <div className="relative" style={{ width: '100%', maxWidth: 460 }}>
+            <div
+              className="relative flex items-end justify-center mx-auto"
+              style={{ width: '100%', maxWidth: 460, minHeight: 'clamp(420px, 52vh, 560px)' }}
+            >
               {/* Silver glow behind portrait */}
               <div
-                className="absolute inset-0 rounded-3xl"
+                className="absolute rounded-3xl"
                 style={{
-                  background: `radial-gradient(ellipse at center, ${S.glow} 0%, transparent 70%)`,
+                  width: '88%',
+                  height: '82%',
+                  bottom: 0,
+                  left: '50%',
+                  transform: 'translateX(-50%)',
+                  background: `radial-gradient(ellipse at center bottom, ${S.glow} 0%, transparent 70%)`,
                   filter: 'blur(24px)',
-                  transform: 'scale(1.1)',
                 }}
               />
-              <picture>
+              <picture className="relative block" style={{ width: '88%', maxWidth: 400 }}>
                 <source srcSet={HERO_AVATAR_WEBP} type="image/webp" />
                 <img
                   src={HERO_AVATAR}
                   alt="Веб-разработчик АРГЕНТУМ"
-                  className="relative w-full object-cover rounded-3xl"
+                  className="w-full h-auto rounded-3xl"
                   width={460}
                   height={613}
                   fetchPriority="high"
                   loading="eager"
                   decoding="async"
                   style={{
-                    aspectRatio: '3/4',
-                    objectPosition: 'top center',
+                    maxHeight: 'clamp(380px, 48vh, 500px)',
+                    objectFit: 'contain',
+                    objectPosition: 'bottom center',
                     border: `1px solid rgba(196,201,207,0.15)`,
+                    display: 'block',
                   }}
                   onError={(e) => {
                     const img = e.currentTarget;
