@@ -1,0 +1,27 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /api/
+Disallow: /data/
+
+# Яндекс: основной обход
+User-agent: Yandex
+Allow: /
+Disallow: /admin
+Disallow: /api/
+Disallow: /data/
+
+# Поиск с Алисой — разрешаем публичные страницы (главная, блог, услуги)
+User-agent: YandexAdditional
+Allow: /
+Disallow: /admin
+Disallow: /api/
+Disallow: /data/
+
+User-agent: YandexAdditionalBot
+Allow: /
+Disallow: /admin
+Disallow: /api/
+Disallow: /data/
+
+Sitemap: https://argentum-web.ru/sitemap.xml

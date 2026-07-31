@@ -1,0 +1,12 @@
+node_modules
+dist
+.DS_Store
+*.local
+*.rar
+.env
+.env.*
+!.env.example
+public/api/config.php
+public/data/form_rate.json
+public/data/leads.json
+scripts/.config-cache.php

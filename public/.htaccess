@@ -1,0 +1,67 @@
+RewriteEngine On
+RewriteBase /
+
+# ── Сжатие ────────────────────────────────────────────────────────────────────
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/css text/xml text/javascript
+  AddOutputFilterByType DEFLATE application/javascript application/json application/xml
+  AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
+
+# ── Кеширование ───────────────────────────────────────────────────────────────
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault "access plus 1 hour"
+  ExpiresByType text/html "access plus 0 seconds"
+  ExpiresByType application/json "access plus 5 minutes"
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/gif "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType image/x-icon "access plus 1 year"
+  ExpiresByType font/woff2 "access plus 1 year"
+</IfModule>
+
+<IfModule mod_headers.c>
+  # Vite-бандлы с хешем в имени — долгий кеш
+  <FilesMatch "\.(js|css|woff2?|svg|ico|jpg|jpeg|png|webp|gif|avif)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+
+  # HTML — всегда свежий
+  <FilesMatch "^index\.html$">
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+  </FilesMatch>
+
+  # robots / sitemap
+  <FilesMatch "^(robots\.txt|sitemap\.xml)$">
+    Header set Cache-Control "public, max-age=86400"
+  </FilesMatch>
+
+  # JSON-данные — короткий кеш (админка обновляет portfolio)
+  <FilesMatch "(portfolio|blog)\.json$">
+    Header set Cache-Control "public, max-age=300, stale-while-revalidate=60"
+  </FilesMatch>
+
+  Header unset ETag
+</IfModule>
+
+FileETag None
+
+# PHP API
+RewriteRule ^api/ - [L]
+
+# Существующие файлы и папки
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# Нет файла, но это статика — не подменять index.html
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule \.(jpg|jpeg|png|gif|webp|svg|ico|json|css|js|map|woff2?|ttf|eot)$ - [L]
+
+# SPA: остальные маршруты → index.html
+RewriteRule ^ index.html [L]
