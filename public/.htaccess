@@ -42,7 +42,7 @@ RewriteBase /
   </FilesMatch>
 
   # JSON-данные — короткий кеш (админка обновляет portfolio)
-  <FilesMatch "(portfolio|blog)\.json$">
+  <FilesMatch "portfolio\.json$">
     Header set Cache-Control "public, max-age=300, stale-while-revalidate=60"
   </FilesMatch>
 
