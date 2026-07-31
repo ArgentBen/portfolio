@@ -4,6 +4,7 @@
   "version": "0.0.1",
   "type": "module",
   "scripts": {
+    "optimize:images": "node scripts/optimize-images.mjs",
     "build": "vite build",
     "dev": "vite"
   },

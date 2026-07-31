@@ -28,6 +28,11 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Optimize images
+        run: |
+          npm install sharp --no-save
+          node scripts/optimize-images.mjs
+
       - name: Build
         run: npm run build
 

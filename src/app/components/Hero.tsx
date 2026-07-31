@@ -1,15 +1,14 @@
-import { useState } from 'react';
 import { motion } from 'motion/react';
 import { ArrowRight } from 'lucide-react';
 import { S } from './Logo';
 import { assetUrl } from './ui/utils';
 
-const HERO_LOCAL = assetUrl('images/hero.png');
+const HERO_AVATAR_WEBP = assetUrl('images/avatar.webp');
+const HERO_AVATAR = assetUrl('images/avatar.png');
 const HERO_FALLBACK =
   'https://images.unsplash.com/photo-1769071167136-f25178b607dd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkZXZlbG9wZXIlMjBwcm9ncmFtbWVyJTIwZGFyayUyMHBvcnRyYWl0JTIwcHJvZmVzc2lvbmFsfGVufDF8fHx8MTc3Mzk5MDcyM3ww&ixlib=rb-4.1.0&q=80&w=1080';
 
 export function Hero() {
-  const [heroSrc, setHeroSrc] = useState(HERO_LOCAL);
 
   return (
     <section
@@ -224,15 +223,23 @@ export function Hero() {
                 }}
               />
               <img
-                src={heroSrc}
+                src={HERO_AVATAR}
                 alt="Веб-разработчик АРГЕНТУМ"
                 className="relative w-full object-cover rounded-3xl"
+                width={460}
+                height={613}
+                fetchPriority="high"
+                loading="eager"
+                decoding="async"
                 style={{
                   aspectRatio: '3/4',
                   objectPosition: 'top center',
                   border: `1px solid rgba(196,201,207,0.15)`,
                 }}
-                onError={() => setHeroSrc(HERO_FALLBACK)}
+                onError={(e) => {
+                  const img = e.currentTarget;
+                  if (img.src !== HERO_FALLBACK) img.src = HERO_FALLBACK;
+                }}
               />
 
               {/* Floating tech card */}

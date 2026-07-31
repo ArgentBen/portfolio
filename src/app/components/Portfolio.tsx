@@ -265,6 +265,8 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
               alt={project.title}
               className="w-full h-full object-cover"
               style={{ minHeight: 300 }}
+              loading="lazy"
+              decoding="async"
               onError={(e) => portfolioSlideOnError(e, project.id)}
             />
             {/* Overlay */}
@@ -578,6 +580,8 @@ export function Portfolio() {
                           filter: isActive ? 'brightness(0.9)' : 'brightness(0.55) saturate(0.7)',
                           transition: 'filter 0.5s ease',
                         }}
+                        loading="lazy"
+                        decoding="async"
                         draggable={false}
                         onError={(e) => portfolioSlideOnError(e, project.id)}
                       />
