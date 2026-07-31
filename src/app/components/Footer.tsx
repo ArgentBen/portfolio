@@ -2,8 +2,6 @@ import React from 'react';
 import { Logo, S } from './Logo';
 
 export function Footer() {
-  const currentYear = new Date().getFullYear();
-
   const footerLinks = {
     services: [
       { name: 'Сайты на Tilda', href: '#services' },
@@ -74,17 +72,6 @@ export function Footer() {
                 </li>
               ))}
             </ul>
-          </div>
-        </div>
-
-        <div className="pt-8" style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}>
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-xs text-muted-foreground text-center md:text-left">
-              © {currentYear} АРГЕНТУМ. Все права защищены.
-            </p>
-            <p className="text-xs text-muted-foreground text-center md:text-right">
-              Разработано с соблюдением требований законодательства РФ
-            </p>
           </div>
         </div>
       </div>

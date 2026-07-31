@@ -1,5 +1,4 @@
 import { motion } from 'motion/react';
-import { ArrowRight } from 'lucide-react';
 import { S } from './Logo';
 import { assetUrl } from './ui/utils';
 
@@ -140,23 +139,6 @@ export function Hero() {
                 href="#portfolio"
                 className="inline-flex items-center gap-2 px-8 py-4 rounded-full"
                 style={{
-                  background: `linear-gradient(135deg, ${S.bright}, ${S.mid})`,
-                  color: '#0a0a0a',
-                  fontWeight: 700,
-                  textDecoration: 'none',
-                  boxShadow: '0 0 30px rgba(196,201,207,0.25)',
-                }}
-                whileHover={{ scale: 1.05, boxShadow: '0 0 45px rgba(196,201,207,0.4)' }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Начать проект
-                <ArrowRight className="w-5 h-5" />
-              </motion.a>
-
-              <motion.a
-                href="#portfolio"
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-full"
-                style={{
                   border: `1px solid rgba(196,201,207,0.3)`,
                   color: S.mid,
                   background: 'rgba(196,201,207,0.05)',
@@ -222,25 +204,28 @@ export function Hero() {
                   transform: 'scale(1.1)',
                 }}
               />
-              <img
-                src={HERO_AVATAR}
-                alt="Веб-разработчик АРГЕНТУМ"
-                className="relative w-full object-cover rounded-3xl"
-                width={460}
-                height={613}
-                fetchPriority="high"
-                loading="eager"
-                decoding="async"
-                style={{
-                  aspectRatio: '3/4',
-                  objectPosition: 'top center',
-                  border: `1px solid rgba(196,201,207,0.15)`,
-                }}
-                onError={(e) => {
-                  const img = e.currentTarget;
-                  if (img.src !== HERO_FALLBACK) img.src = HERO_FALLBACK;
-                }}
-              />
+              <picture>
+                <source srcSet={HERO_AVATAR_WEBP} type="image/webp" />
+                <img
+                  src={HERO_AVATAR}
+                  alt="Веб-разработчик АРГЕНТУМ"
+                  className="relative w-full object-cover rounded-3xl"
+                  width={460}
+                  height={613}
+                  fetchPriority="high"
+                  loading="eager"
+                  decoding="async"
+                  style={{
+                    aspectRatio: '3/4',
+                    objectPosition: 'top center',
+                    border: `1px solid rgba(196,201,207,0.15)`,
+                  }}
+                  onError={(e) => {
+                    const img = e.currentTarget;
+                    if (img.src !== HERO_FALLBACK) img.src = HERO_FALLBACK;
+                  }}
+                />
+              </picture>
 
               {/* Floating tech card */}
               <motion.div
