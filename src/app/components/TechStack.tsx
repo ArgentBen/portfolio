@@ -1,10 +1,16 @@
 import { motion, useInView } from 'motion/react';
 import { useRef } from 'react';
 import { S } from './Logo';
-import { assetUrl } from './ui/utils';
+import { TechIconById, type TechIconId } from './TechIcons';
 
 // Только реальный стек
-const TECHS = [
+const TECHS: Array<{
+  name: string;
+  icon: TechIconId;
+  color: string;
+  iconColor?: string;
+  desc: string;
+}> = [
   {
     name: 'HTML5',
     icon: 'html5',
@@ -39,6 +45,7 @@ const TECHS = [
     name: 'Next.js',
     icon: 'nextjs',
     color: '#FFFFFF',
+    iconColor: '#000000',
     desc: 'Фреймворк',
   },
   {
@@ -57,16 +64,7 @@ const TECHS = [
 
 function TechIcon({ tech }: { tech: (typeof TECHS)[0] }) {
   return (
-    <img
-      src={assetUrl(`icons/tech/${tech.icon}.svg`)}
-      alt={tech.name}
-      width={28}
-      height={28}
-      loading="lazy"
-      decoding="async"
-      className="w-7 h-7 object-contain"
-      draggable={false}
-    />
+    <TechIconById id={tech.icon} color={tech.iconColor ?? tech.color} />
   );
 }
 
@@ -89,8 +87,11 @@ function TechCard({ tech }: { tech: (typeof TECHS)[0] }) {
       <div className="p-5">
         {/* Symbol */}
         <div
-          className="w-12 h-12 rounded-xl flex items-center justify-center mb-4"
-          style={{ background: `${tech.color}18` }}
+          className="w-12 h-12 rounded-xl flex items-center justify-center mb-4 shrink-0"
+          style={{
+            background: `${tech.color}18`,
+            ...(tech.icon === 'nextjs' ? { background: 'rgba(255,255,255,0.12)' } : {}),
+          }}
         >
           <TechIcon tech={tech} />
         </div>
