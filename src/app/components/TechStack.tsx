@@ -1,6 +1,7 @@
 import { motion, useInView } from 'motion/react';
 import { useRef } from 'react';
 import { S } from './Logo';
+import { assetUrl } from './ui/utils';
 
 // Только реальный стек
 const TECHS = [
@@ -36,7 +37,7 @@ const TECHS = [
   },
   {
     name: 'Next.js',
-    icon: 'nextdotjs',
+    icon: 'nextjs',
     color: '#FFFFFF',
     desc: 'Фреймворк',
   },
@@ -48,40 +49,24 @@ const TECHS = [
   },
   {
     name: 'Tilda',
-    icon: null,
-    symbol: 'Ti',
+    icon: 'tilda',
     color: '#5B73FF',
     desc: 'Конструктор',
   },
 ];
 
 function TechIcon({ tech }: { tech: (typeof TECHS)[0] }) {
-  if (tech.icon) {
-    const hex = tech.color.replace('#', '');
-    return (
-      <img
-        src={`https://cdn.simpleicons.org/${tech.icon}/${hex}`}
-        alt={tech.name}
-        width={28}
-        height={28}
-        loading="lazy"
-        decoding="async"
-        className="w-7 h-7 object-contain"
-      />
-    );
-  }
-
   return (
-    <span
-      style={{
-        color: tech.color,
-        fontWeight: 800,
-        fontSize: '0.85rem',
-        letterSpacing: '-0.02em',
-      }}
-    >
-      {tech.symbol}
-    </span>
+    <img
+      src={assetUrl(`icons/tech/${tech.icon}.svg`)}
+      alt={tech.name}
+      width={28}
+      height={28}
+      loading="lazy"
+      decoding="async"
+      className="w-7 h-7 object-contain"
+      draggable={false}
+    />
   );
 }
 
