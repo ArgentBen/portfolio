@@ -6,53 +6,84 @@ import { S } from './Logo';
 const TECHS = [
   {
     name: 'HTML5',
-    symbol: 'H5',
+    icon: 'html5',
     color: '#E34F26',
     desc: 'Разметка',
   },
   {
     name: 'CSS3',
-    symbol: 'C3',
+    icon: 'css3',
     color: '#1572B6',
     desc: 'Стили',
   },
   {
     name: 'SCSS',
-    symbol: 'Sc',
+    icon: 'sass',
     color: '#CD6799',
     desc: 'Препроцессор',
   },
   {
     name: 'JavaScript',
-    symbol: 'JS',
+    icon: 'javascript',
     color: '#F7DF1E',
     desc: 'Интерактивность',
   },
   {
     name: 'React',
-    symbol: 'Re',
+    icon: 'react',
     color: '#61DAFB',
     desc: 'UI-библиотека',
   },
   {
     name: 'Next.js',
-    symbol: 'Nx',
-    color: '#E8E8E8',
+    icon: 'nextdotjs',
+    color: '#FFFFFF',
     desc: 'Фреймворк',
   },
   {
     name: 'WordPress',
-    symbol: 'WP',
-    color: '#21A0DB',
+    icon: 'wordpress',
+    color: '#21759B',
     desc: 'CMS',
   },
   {
     name: 'Tilda',
+    icon: null,
     symbol: 'Ti',
     color: '#5B73FF',
     desc: 'Конструктор',
   },
 ];
+
+function TechIcon({ tech }: { tech: (typeof TECHS)[0] }) {
+  if (tech.icon) {
+    const hex = tech.color.replace('#', '');
+    return (
+      <img
+        src={`https://cdn.simpleicons.org/${tech.icon}/${hex}`}
+        alt={tech.name}
+        width={28}
+        height={28}
+        loading="lazy"
+        decoding="async"
+        className="w-7 h-7 object-contain"
+      />
+    );
+  }
+
+  return (
+    <span
+      style={{
+        color: tech.color,
+        fontWeight: 800,
+        fontSize: '0.85rem',
+        letterSpacing: '-0.02em',
+      }}
+    >
+      {tech.symbol}
+    </span>
+  );
+}
 
 function TechCard({ tech }: { tech: (typeof TECHS)[0] }) {
   return (
@@ -76,16 +107,7 @@ function TechCard({ tech }: { tech: (typeof TECHS)[0] }) {
           className="w-12 h-12 rounded-xl flex items-center justify-center mb-4"
           style={{ background: `${tech.color}18` }}
         >
-          <span
-            style={{
-              color: tech.color,
-              fontWeight: 800,
-              fontSize: tech.symbol.length > 2 ? '0.85rem' : '1rem',
-              letterSpacing: '-0.02em',
-            }}
-          >
-            {tech.symbol}
-          </span>
+          <TechIcon tech={tech} />
         </div>
 
         {/* Name */}

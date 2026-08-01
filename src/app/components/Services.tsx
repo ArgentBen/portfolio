@@ -1,6 +1,6 @@
 import { motion, useInView } from 'motion/react';
 import React, { useRef, useState } from 'react';
-import { ArrowUpRight, Check } from 'lucide-react';
+import { Check } from 'lucide-react';
 import { S } from './Logo';
 
 const platforms = [
@@ -297,22 +297,6 @@ export function Services() {
                       </div>
                     ))}
                   </div>
-
-                  {/* CTA */}
-                  <motion.a
-                    href="#portfolio"
-                    className="inline-flex items-center gap-2 text-sm"
-                    style={{
-                      color: isHovered ? p.color : '#606060',
-                      textDecoration: 'none',
-                      fontWeight: 600,
-                      transition: 'color 0.3s',
-                    }}
-                    whileHover={{ x: 3 }}
-                  >
-                    Обсудить проект
-                    <ArrowUpRight className="w-4 h-4" />
-                  </motion.a>
                 </div>
               </motion.div>
             );

@@ -195,8 +195,7 @@ export function Hero() {
             transition={{ delay: 0.4, duration: 1, ease: 'easeOut' }}
           >
             <div
-              className="relative flex items-end justify-center mx-auto"
-              style={{ width: '100%', maxWidth: 460, minHeight: 'clamp(420px, 52vh, 560px)' }}
+              className="relative flex items-center justify-center mx-auto w-full max-w-[460px] lg:items-end lg:min-h-[520px]"
             >
               {/* Silver glow behind portrait */}
               <div
@@ -211,21 +210,20 @@ export function Hero() {
                   filter: 'blur(24px)',
                 }}
               />
-              <picture className="relative block" style={{ width: '88%', maxWidth: 400 }}>
+              <picture className="relative block mx-auto lg:mx-0" style={{ width: '88%', maxWidth: 400 }}>
                 <source srcSet={HERO_AVATAR_WEBP} type="image/webp" />
                 <img
                   src={HERO_AVATAR}
                   alt="Веб-разработчик АРГЕНТУМ"
-                  className="w-full h-auto rounded-3xl"
+                  className="w-full h-auto rounded-3xl max-h-[340px] sm:max-h-[420px] lg:max-h-[500px]"
                   width={460}
                   height={613}
                   fetchPriority="high"
                   loading="eager"
                   decoding="async"
                   style={{
-                    maxHeight: 'clamp(380px, 48vh, 500px)',
                     objectFit: 'contain',
-                    objectPosition: 'bottom center',
+                    objectPosition: 'center center',
                     border: `1px solid rgba(196,201,207,0.15)`,
                     display: 'block',
                   }}

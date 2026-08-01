@@ -2,7 +2,7 @@
   "name": "АРГЕНТУМ",
   "short_name": "АРГЕНТУМ",
   "description": "Создание и доработка сайтов под ключ",
-  "start_url": "/",
+  "start_url": "/portfolio/",
   "display": "standalone",
   "background_color": "#0a0a0a",
   "theme_color": "#0a0a0a",

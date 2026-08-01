@@ -36,10 +36,10 @@ export function About() {
   ];
 
   return (
-    <section className="py-24 px-6 md:px-12 lg:px-24 relative overflow-hidden" id="about">
+    <section className="py-24 relative overflow-hidden" id="about">
       <div className="absolute inset-0 bg-gradient-to-b from-muted/20 to-transparent" />
 
-      <div className="container mx-auto relative z-10 max-w-4xl" ref={ref}>
+      <div className="container mx-auto px-6 md:px-12 lg:px-24 relative z-10" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}

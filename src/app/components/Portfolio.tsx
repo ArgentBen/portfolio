@@ -603,8 +603,8 @@ export function Portfolio() {
                         />
                       )}
 
-                      {/* Platform badge — тёмный фон + белый текст, акцент цветом рамки */}
-                      <div className="absolute top-6 left-6">
+                      {/* Platform badge */}
+                      <div className="absolute top-6 left-6 hidden md:block">
                         <span
                           className="px-3 py-1.5 rounded-full text-xs"
                           style={{
@@ -621,16 +621,16 @@ export function Portfolio() {
                       </div>
 
                       {/* Year top right */}
-                      <div className="absolute top-6 right-6">
+                      <div className="absolute top-6 right-6 hidden md:block">
                         <span className="text-xs" style={{ color: 'rgba(255,255,255,0.6)', textShadow: '0 1px 2px rgba(0,0,0,0.8)' }}>
                           {project.year}
                         </span>
                       </div>
 
                       {/* Bottom content */}
-                      <div className="absolute bottom-0 left-0 right-0 p-7">
-                        {/* Results row */}
-                        <div className="flex gap-5 mb-5">
+                      <div className="absolute bottom-0 left-0 right-0 p-4 md:p-7">
+                        {/* Results row — desktop only */}
+                        <div className="hidden md:flex gap-5 mb-5">
                           {project.results.map((r) => (
                             <div key={r.label}>
                               <div
@@ -663,14 +663,14 @@ export function Portfolio() {
                         </div>
 
                         <div className="flex items-end justify-between gap-4">
-                          <div>
-                            <p className="text-xs mb-1.5" style={{ color: 'rgba(255,255,255,0.65)', textShadow: '0 1px 2px rgba(0,0,0,0.75)' }}>
+                          <div className="min-w-0">
+                            <p className="hidden md:block text-xs mb-1.5" style={{ color: 'rgba(255,255,255,0.65)', textShadow: '0 1px 2px rgba(0,0,0,0.75)' }}>
                               {project.client}
                             </p>
                             <h3
                               style={{
                                 fontWeight: 800,
-                                fontSize: 'clamp(1.2rem, 2.5vw, 1.65rem)',
+                                fontSize: 'clamp(1rem, 4vw, 1.65rem)',
                                 color: '#ffffff',
                                 lineHeight: 1.2,
                                 margin: 0,
@@ -678,14 +678,14 @@ export function Portfolio() {
                             >
                               {project.title}
                             </h3>
-                            <p className="mt-1.5 text-sm" style={{ color: 'rgba(255,255,255,0.72)', textShadow: '0 1px 2px rgba(0,0,0,0.7)' }}>
+                            <p className="hidden md:block mt-1.5 text-sm" style={{ color: 'rgba(255,255,255,0.72)', textShadow: '0 1px 2px rgba(0,0,0,0.7)' }}>
                               {project.shortDesc}
                             </p>
                           </div>
 
-                          {/* Open button */}
+                          {/* Open button — desktop only */}
                           <motion.div
-                            className="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center"
+                            className="hidden md:flex flex-shrink-0 w-12 h-12 rounded-full items-center justify-center"
                             style={{
                               background: isActive
                                 ? `linear-gradient(145deg, ${col}, ${col}dd)`
